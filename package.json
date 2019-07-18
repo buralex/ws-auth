@@ -8,9 +8,10 @@
   "license": "BSD",
   "dependencies": {
     "express": "4.13.4",
+    "nodemon": "^1.19.1",
     "socket.io": "^2.2.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   }
 }

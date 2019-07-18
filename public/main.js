@@ -23,7 +23,10 @@ $(function() {
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
-  var socket = io();
+  const URL = '';
+  var socket = io(URL, {query: 'token=secretData'});
+
+
 
   const addParticipantsMessage = (data) => {
     var message = '';
@@ -45,6 +48,11 @@ $(function() {
       $chatPage.show();
       $loginPage.off('click');
       $currentInput = $inputMessage.focus();
+
+      if (!socket.connected) {
+        alert('no connection !!!');
+        console.log('no connection !!!');
+      }
 
       // Tell the server your username
       socket.emit('add user', username);
@@ -228,6 +236,7 @@ $(function() {
   // Whenever the server emits 'login', log the login message
   socket.on('login', (data) => {
     connected = true;
+    console.log('logged in', connected);
     // Display the welcome message
     var message = "Welcome to Socket.IO Chat – ";
     log(message, {
