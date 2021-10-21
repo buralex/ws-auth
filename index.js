@@ -27,9 +27,10 @@ let numUsers = 0;
 io.use(function(socket, next) {
   const handshakeData = socket.handshake.query;
 
-  console.log('handshakeData', handshakeData.token);
+  // console.log('handshakeData', handshakeData.token);
+  console.log('socket.handshake', socket.handshake.auth.token);
 
-  if (handshakeData.token === 'secretData') {
+  if (socket.handshake.auth.token === 'SecretAuthToken') {
     next();
   } else {
     next(new Error('not authorized'));
