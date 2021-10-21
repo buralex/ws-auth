@@ -24,7 +24,8 @@ $(function() {
   var $currentInput = $usernameInput.focus();
 
   const URL = '';
-  var socket = io(URL, {query: 'token=secretData'});
+  var socket = io(URL, {query: 'token=secretData', transports: ['websocket']});
+  // var socket = io(URL, {query: 'token=secretData'});
 
 
 
